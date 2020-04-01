@@ -27,6 +27,8 @@ function Input({
   iconSize,
   iconContent,
   password,
+  labelStyle,
+  helpStyle,
   ...rest
 }) {
   const [isPassword, setIsPassword] = React.useState(false);
@@ -73,8 +75,8 @@ function Input({
       />
     </TouchableOpacity>
   );
-  const lebelContent = label && <Text style={styles.label}>{label}</Text>;
-  const helpContent = help && <Text style={styles.helpText}>{help}</Text>;
+  const lebelContent = label && <Text style={[styles.label, labelStyle && labelStyle]}>{label}</Text>;
+  const helpContent = help && <Text style={[styles.helpText, helpStyle && helpStyle]}>{help}</Text>;
 
   return (
     <View
@@ -126,6 +128,8 @@ Input.defaultProps = {
   iconContent: null,
   theme: GalioTheme,
   onRef: null,
+  labelStyle: null,
+  helpStyle: null,
 };
 
 Input.propTypes = {
@@ -152,6 +156,8 @@ Input.propTypes = {
   iconContent: PropTypes.any,
   theme: PropTypes.any,
   onRef: PropTypes.func,
+  labelStyle: PropTypes.any,
+  helpStyle: PropTypes.any,
 };
 
 const styles = theme =>
